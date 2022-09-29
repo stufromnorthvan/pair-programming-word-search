@@ -1,3 +1,15 @@
+const transpose = function(matrix) {
+  let newMatrix = [];
+  for (let y = 0; y < matrix[0].length; y++) {
+    let newArray = [];
+    for (let x = 0; x < matrix.length; x++) {
+      newArray.push(matrix[x][y]);
+    }
+    newMatrix.push(newArray);
+  }
+  return newMatrix;
+};
+
 const wordSearch = (letters, word) => {
   const horizontalJoin = letters.map(ls => ls.join(''));
 
@@ -6,17 +18,26 @@ const wordSearch = (letters, word) => {
       return true;
     }
   }
-
-  let vertWordArray = [];
-  for (x = 0; x < letters[0].length; x++) {
-    for (y = 0; y < letters.length; y++) {
-      vertWordArray.push(letters[y][x]);
+  let transPosedLetters = transpose(letters);
+  let verticalJoin = transPosedLetters.map(vs => vs.join(''));
+  for (let v of verticalJoin)
+    if (v.includes(word)) {
+      return true;
     }
-  }
-  let vertWordString = vertWordArray.join('');
-  if (vertWordString.includes(word)) {
-    return true;
-  }
+
+  // let vertWordArray = [];
+  // for (x = 0; x < letters[0].length; x++) {
+  //   for (y = 0; y < letters.length; y++) {
+  //     vertWordArray.push(letters[y][x]);
+  //   }
+  // }
+  // console.log(vertWordArray)
+  // let vertWordString = vertWordArray.join('');
+
+  // if (vertWordString.includes(word)) {
+  //   return true;
+  // }
+
   return false;
 };
 
@@ -30,6 +51,6 @@ wordSearch([
   ['U', 'B', 'T', 'W', 'A', 'P', 'A', 'I'],
   ['O', 'D', 'C', 'A', 'K', 'U', 'A', 'S'],
   ['E', 'Z', 'K', 'F', 'Q', 'U', 'A', 'L'],
-], 'LARRY');
+], 'UUA');
 
 module.exports = wordSearch;
