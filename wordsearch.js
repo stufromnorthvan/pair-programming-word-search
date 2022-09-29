@@ -24,20 +24,6 @@ const wordSearch = (letters, word) => {
     if (v.includes(word)) {
       return true;
     }
-
-  // let vertWordArray = [];
-  // for (x = 0; x < letters[0].length; x++) {
-  //   for (y = 0; y < letters.length; y++) {
-  //     vertWordArray.push(letters[y][x]);
-  //   }
-  // }
-  // console.log(vertWordArray)
-  // let vertWordString = vertWordArray.join('');
-
-  // if (vertWordString.includes(word)) {
-  //   return true;
-  // }
-
   return false;
 };
 
